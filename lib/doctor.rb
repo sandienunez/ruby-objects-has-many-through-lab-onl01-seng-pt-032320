@@ -24,4 +24,8 @@ class Doctor
         appointment.patient
       end
     end
+
+    def appointments 
+        
+    end
   end
