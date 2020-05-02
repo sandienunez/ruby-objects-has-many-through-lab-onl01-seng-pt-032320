@@ -1,12 +1,19 @@
 class Patient
-    attr_accessor :name 
-    
+    attr_accessor :name, :appointments
+
+    @@all = []
+
     def initialize(name)
       @name=name
+      @@all << self 
+    end
+
+    def self.all
+        @@all #class variable 
     end
     
      def new_appointment(doctor, date)
-      Appointment.new(date, self, doctor)
+      Appointment.new(doctor, self, date) #self is the patient 
     end
   
     def appointments
@@ -16,9 +23,7 @@ class Patient
     end
   
     def doctors
-      appointments.map do |appointment|
-        appointment.doctor
-      end
+        self.appointments.map {|appt| appt.doctor} #looking for all the doctors on that app that match self 
     end
     
   end
